@@ -19,7 +19,11 @@ pipeline{
 				checkout scm
 			}
 		}
-		
+		stage("checkout frm scm"){
+			steps{
+				sh "ansible --version"
+			}
+		}
 	}
 
 	
