@@ -14,12 +14,12 @@ pipeline{
 				cleanWs()
 			}
 		}
-		stage("checkout frm scm"){
+		stage("checkout from scm"){
 			steps{
 				checkout scm
 			}
 		}
-		stage("checkout frm scm"){
+		stage("check ansible version"){
 			steps{
 				sh "ansible --version"
 			}
