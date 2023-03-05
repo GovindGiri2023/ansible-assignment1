@@ -18,7 +18,7 @@ pipeline{
 		}
 		stage("installin web server on ansible hosts"){
 			steps{
-				sh 'ansible all -m shell -a "sudo yum install httpd -y" -u jenkins --become-user ansible'
+				sh 'ansible all -m shell -a "sudo yum install httpd -y" --become'
 			}
 		}
 		stage("deploying index.html to httpd"){
