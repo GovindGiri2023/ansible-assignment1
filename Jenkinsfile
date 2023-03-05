@@ -18,13 +18,13 @@ pipeline{
 		}
 		stage("installin web server on ansible hosts"){
 			steps{
-				sh 'ansible all -m shell -a "sudo yum install httpd -y" '
+				sh 'ansible all -m yum -a "name=httpd state=present" '
 			}
 		}
 		stage("deploying index.html to httpd"){
 			steps{
-				sh 'ansible all -bm copy "src=index.html dest=/var/www/html/'
-				 sh 'ansible all -bm service "name=httpd status=restarted" '
+				sh 'ansible all -m copy -a "src=index.html dest=/var/www/html/'
+				 sh 'ansible all -m service -a "name=httpd status=restarted" '
 			}
 		}
 	}
