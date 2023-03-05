@@ -19,9 +19,9 @@ pipeline{
 				checkout scm
 			}
 		}
-		stage("check ansible version"){
+		stage("installin web server on ansible hosts"){
 			steps{
-				sh "ansible --version"
+				sh 'ansible -a "sudo yum install httpd -y " '
 			}
 		}
 	}
