@@ -23,7 +23,7 @@ pipeline{
 		}
 		stage("deploying index.html to httpd"){
 			steps{
-				sh 'ansible all -m copy -a "src=index.html dest=/var/www/html/'
+				sh 'ansible all -m copy -a "src=index.html dest=/var/www/html/" '
 				 sh 'ansible all -m service -a "name=httpd status=restarted" '
 			}
 		}
