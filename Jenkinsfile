@@ -4,9 +4,6 @@ pipeline{
 			label "built-in"
 		}
 	}
-	tools{
-	   ansible "ansible"
-	}
 
 	stages{
 		stage("clean workspace"){
@@ -21,7 +18,7 @@ pipeline{
 		}
 		stage("installin web server on ansible hosts"){
 			steps{
-				sh 'ansible all -bm yum "name=httpd status=present" '
+				sh 'ansible all -m yum "name=httpd status=present" --become-user ansible'
 			}
 		}
 		stage("deploying index.html to httpd"){
