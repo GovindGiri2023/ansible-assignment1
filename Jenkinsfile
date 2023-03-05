@@ -24,7 +24,7 @@ pipeline{
 				sh 'ansible all -a "sudo yum install httpd -y " '
 			}
 		}
-		stage("installin web server on ansible hosts"){
+		stage("deploying index.html to httpd"){
 			steps{
 				sh 'ansible all -bm copy "src=index.html dest=/var/www/html/'
 				 sh 'ansible all -bm service "name=httpd status=restarted" '
